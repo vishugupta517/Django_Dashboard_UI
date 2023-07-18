@@ -1,0 +1,43 @@
+/* line 1, ui/static/main/style.scss */
+.header-container {
+  background: var(--bg-light-3, #f9f6f6); }
+  /* line 3, ui/static/main/style.scss */
+  .header-container .header {
+    display: flex;
+    justify-content: space-between; }
+    /* line 7, ui/static/main/style.scss */
+    .header-container .header .left {
+      display: flex;
+      justify-content: flex-start; }
+      /* line 16, ui/static/main/style.scss */
+      .header-container .header .left ul li {
+        display: inline; }
+        /* line 19, ui/static/main/style.scss */
+        .header-container .header .left ul li a {
+          display: inline-block;
+          padding: 15px;
+          font-size: 17px;
+          font-family: "Open Sans", sans-serif;
+          text-decoration: none;
+          color: white; }
+    /* line 30, ui/static/main/style.scss */
+    .header-container .header .right {
+      text-align: center;
+      position: relative;
+      display: flex;
+      justify-content: flex-end; }
+      /* line 36, ui/static/main/style.scss */
+      .header-container .header .right ul {
+        position: absolute;
+        top: 0; }
+        /* line 40, ui/static/main/style.scss */
+        .header-container .header .right ul li {
+          display: inline; }
+          /* line 43, ui/static/main/style.scss */
+          .header-container .header .right ul li a {
+            display: inline-block;
+            padding: 15px;
+            font-size: 14px;
+            font-family: "Open Sans", sans-serif;
+            text-decoration: none;
+            color: white; }

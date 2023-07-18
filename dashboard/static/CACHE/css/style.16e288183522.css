@@ -1,0 +1,120 @@
+/* line 1, ui/static/main/style.scss */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+/* line 8, ui/static/main/style.scss */
+.outer-container {
+  height: 100vh;
+  width: 100vw; }
+  /* line 12, ui/static/main/style.scss */
+  .outer-container .header-container {
+    background: var(--bg-light-3, #f9f6f6);
+    height: 56px; }
+    /* line 15, ui/static/main/style.scss */
+    .outer-container .header-container .header {
+      display: flex;
+      justify-content: space-between; }
+      /* line 19, ui/static/main/style.scss */
+      .outer-container .header-container .header .left {
+        display: flex;
+        justify-content: flex-start; }
+        /* line 23, ui/static/main/style.scss */
+        .outer-container .header-container .header .left ul {
+          position: absolute;
+          top: 0;
+          width: 100%; }
+          /* line 28, ui/static/main/style.scss */
+          .outer-container .header-container .header .left ul li {
+            display: inline; }
+            /* line 31, ui/static/main/style.scss */
+            .outer-container .header-container .header .left ul li a {
+              display: inline-block;
+              padding: 15px;
+              font-size: 14px;
+              font-family: "Open Sans", sans-serif;
+              text-decoration: none;
+              color: white; }
+              /* line 39, ui/static/main/style.scss */
+              .outer-container .header-container .header .left ul li a .hamburger {
+                color: black;
+                margin-left: -15px; }
+            /* line 44, ui/static/main/style.scss */
+            .outer-container .header-container .header .left ul li .header-text {
+              margin-right: 15px; }
+      /* line 50, ui/static/main/style.scss */
+      .outer-container .header-container .header .right {
+        text-align: center;
+        position: relative;
+        display: flex;
+        justify-content: flex-end; }
+        /* line 56, ui/static/main/style.scss */
+        .outer-container .header-container .header .right ul {
+          position: absolute;
+          top: 0; }
+          /* line 60, ui/static/main/style.scss */
+          .outer-container .header-container .header .right ul li {
+            display: inline; }
+            /* line 63, ui/static/main/style.scss */
+            .outer-container .header-container .header .right ul li a {
+              display: inline-block;
+              padding: 15px;
+              font-size: 14px;
+              font-family: "Open Sans", sans-serif;
+              text-decoration: none;
+              color: white; }
+  /* line 77, ui/static/main/style.scss */
+  .outer-container .main-container {
+    display: flex; }
+    /* line 80, ui/static/main/style.scss */
+    .outer-container .main-container .sidebar {
+      height: calc(100vh -56px);
+      background: linear-gradient(148deg, #8b4367 0%, #343571 100%);
+      box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2);
+      width: 100px;
+      padding: 15px 0; }
+      /* line 86, ui/static/main/style.scss */
+      .outer-container .main-container .sidebar ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 20px; }
+      /* line 93, ui/static/main/style.scss */
+      .outer-container .main-container .sidebar li .sidebar-icon {
+        width: 24px;
+        height: 24px; }
+    /* line 100, ui/static/main/style.scss */
+    .outer-container .main-container .section1 {
+      display: flex;
+      flex-direction: column;
+      width: 525px;
+      padding: 10px;
+      border: 1px solid tomato; }
+      /* line 107, ui/static/main/style.scss */
+      .outer-container .main-container .section1 .section1-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 70px;
+        border-radius: 10px;
+        border: 0.5px solid var(--text-ddd, #ddd);
+        background: rgba(238, 238, 238, 0.3);
+        padding: 7px; }
+        /* line 117, ui/static/main/style.scss */
+        .outer-container .main-container .section1 .section1-row .section1-row-small {
+          font-size: 12px;
+          color: #777777;
+          padding-bottom: 0;
+          margin-bottom: 0; }
+        /* line 124, ui/static/main/style.scss */
+        .outer-container .main-container .section1 .section1-row .section-row-text {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          /* line 128, ui/static/main/style.scss */
+          .outer-container .main-container .section1 .section1-row .section-row-text div {
+            display: flex;
+            align-items: center;
+            justify-items: center; }

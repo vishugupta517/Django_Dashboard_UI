@@ -1,0 +1,66 @@
+/* line 1, ui/static/main/style.scss */
+.header-container {
+  background: var(--bg-light-3, #f9f6f6); }
+  /* line 3, ui/static/main/style.scss */
+  .header-container .header {
+    display: flex;
+    justify-content: space-between; }
+    /* line 7, ui/static/main/style.scss */
+    .header-container .header .left {
+      display: flex;
+      justify-content: flex-start; }
+      /* line 11, ui/static/main/style.scss */
+      .header-container .header .left ul {
+        position: absolute;
+        top: 0;
+        width: 100%; }
+        /* line 16, ui/static/main/style.scss */
+        .header-container .header .left ul li {
+          display: inline; }
+          /* line 19, ui/static/main/style.scss */
+          .header-container .header .left ul li a {
+            display: inline-block;
+            padding: 15px;
+            font-size: 14px;
+            font-family: "Open Sans", sans-serif;
+            text-decoration: none;
+            color: white; }
+            /* line 27, ui/static/main/style.scss */
+            .header-container .header .left ul li a .hamburger {
+              color: black;
+              margin-left: -15px; }
+          /* line 32, ui/static/main/style.scss */
+          .header-container .header .left ul li .header-text {
+            margin-right: 15px; }
+    /* line 38, ui/static/main/style.scss */
+    .header-container .header .right {
+      text-align: center;
+      position: relative;
+      display: flex;
+      justify-content: flex-end; }
+      /* line 44, ui/static/main/style.scss */
+      .header-container .header .right ul {
+        position: absolute;
+        top: 0; }
+        /* line 48, ui/static/main/style.scss */
+        .header-container .header .right ul li {
+          display: inline; }
+          /* line 51, ui/static/main/style.scss */
+          .header-container .header .right ul li a {
+            display: inline-block;
+            padding: 15px;
+            font-size: 14px;
+            font-family: "Open Sans", sans-serif;
+            text-decoration: none;
+            color: white; }
+
+/* line 64, ui/static/main/style.scss */
+.sidebar {
+  height: 100%;
+  background: linear-gradient(148deg, #8b4367 0%, #343571 100%);
+  box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2); }
+  /* line 68, ui/static/main/style.scss */
+  .sidebar ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none; }

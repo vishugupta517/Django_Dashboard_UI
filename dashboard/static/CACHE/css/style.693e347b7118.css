@@ -1,0 +1,85 @@
+/* line 1, ui/static/main/style.scss */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+/* line 8, ui/static/main/style.scss */
+.outer-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: aqua; }
+  /* line 13, ui/static/main/style.scss */
+  .outer-container .header-container {
+    background: var(--bg-light-3, #f9f6f6);
+    height: 56px; }
+    /* line 16, ui/static/main/style.scss */
+    .outer-container .header-container .header {
+      display: flex;
+      justify-content: space-between; }
+      /* line 20, ui/static/main/style.scss */
+      .outer-container .header-container .header .left {
+        display: flex;
+        justify-content: flex-start; }
+        /* line 24, ui/static/main/style.scss */
+        .outer-container .header-container .header .left ul {
+          position: absolute;
+          top: 0;
+          width: 100%; }
+          /* line 29, ui/static/main/style.scss */
+          .outer-container .header-container .header .left ul li {
+            display: inline; }
+            /* line 32, ui/static/main/style.scss */
+            .outer-container .header-container .header .left ul li a {
+              display: inline-block;
+              padding: 15px;
+              font-size: 14px;
+              font-family: "Open Sans", sans-serif;
+              text-decoration: none;
+              color: white; }
+              /* line 40, ui/static/main/style.scss */
+              .outer-container .header-container .header .left ul li a .hamburger {
+                color: black;
+                margin-left: -15px; }
+            /* line 45, ui/static/main/style.scss */
+            .outer-container .header-container .header .left ul li .header-text {
+              margin-right: 15px; }
+      /* line 51, ui/static/main/style.scss */
+      .outer-container .header-container .header .right {
+        text-align: center;
+        position: relative;
+        display: flex;
+        justify-content: flex-end; }
+        /* line 57, ui/static/main/style.scss */
+        .outer-container .header-container .header .right ul {
+          position: absolute;
+          top: 0; }
+          /* line 61, ui/static/main/style.scss */
+          .outer-container .header-container .header .right ul li {
+            display: inline; }
+            /* line 64, ui/static/main/style.scss */
+            .outer-container .header-container .header .right ul li a {
+              display: inline-block;
+              padding: 15px;
+              font-size: 14px;
+              font-family: "Open Sans", sans-serif;
+              text-decoration: none;
+              color: white; }
+  /* line 79, ui/static/main/style.scss */
+  .outer-container .main-container .sidebar {
+    height: calc(100vh -56px);
+    background: linear-gradient(148deg, #8b4367 0%, #343571 100%);
+    box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2);
+    width: 100px; }
+    /* line 84, ui/static/main/style.scss */
+    .outer-container .main-container .sidebar ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: 20px;
+      margin: 20px 0; }
+    /* line 92, ui/static/main/style.scss */
+    .outer-container .main-container .sidebar li .sidebar-icon {
+      width: 24px;
+      height: 24px; }

@@ -1,0 +1,5 @@
+/* line 1, ui/static/main/style.scss */
+.header {
+  display: flex;
+  background: var(--bg-light-3, #f9f6f6);
+  fill: linear-gradient(90deg, #ffe0e0 0%, #ff6464 93.23%); }

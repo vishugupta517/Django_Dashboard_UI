@@ -1,0 +1,39 @@
+/* line 56, ui/static/main/style.scss */
+body {
+  background-color: #fbfbfb; }
+
+@media (min-width: 991.98px) {
+  /* line 60, ui/static/main/style.scss */
+  main {
+    padding-left: 240px; } }
+
+/* Sidebar */
+/* line 66, ui/static/main/style.scss */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0;
+  /* Height of navbar */
+  width: 240px;
+  z-index: 600; }
+
+@media (max-width: 991.98px) {
+  /* line 77, ui/static/main/style.scss */
+  .sidebar {
+    width: 100%; } }
+
+/* line 81, ui/static/main/style.scss */
+.sidebar .active {
+  border-radius: 5px; }
+
+/* line 86, ui/static/main/style.scss */
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */ }

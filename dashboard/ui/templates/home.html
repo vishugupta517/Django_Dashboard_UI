@@ -1,0 +1,982 @@
+{% extends "base.html" %}
+
+{% load sec_to_hm %}
+{% load time_class %}
+
+{% block content %}
+
+<!-- header -->
+<div class="outer-container">
+
+    <div class="header-container">
+        <div class="header">
+            <div class="left">
+                <ul>
+                    <li><a href="#"> <i class="fas fa-bars fa-lg hamburger"></i></a></li>
+                    <li><a href="#"> {% load static %}<img src="{% static '/images/logo.png' %}" alt=""></a>
+                    </li>
+                    <li class="header-text">Management Live</li>
+                </ul>
+            </div>
+            <div class="right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1495" height="56" viewBox="0 0 1495 56" fill="none">
+                    <path d="M0 56L48.1558 0H1495V28V56H403.518H0Z" fill="url(#paint0_linear_4_8401)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_4_8401" x1="20.3176" y1="28.9999" x2="1385.38" y2="28.9999"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFE0E0" />
+                            <stop offset="0.932292" stop-color="#FF6464" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Admission</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li class="first-li"><i class="fas fa-search sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-filter sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-calendar sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-ambulance sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-bus sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-prescription sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-hospital sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-shopping-bag sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-globe sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-minus-circle sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-journal-whills sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-chart-area sidebar-icon"></i>
+                </li>
+                <li><i class="fas fa-home sidebar-icon"></i>
+                </li>
+            </ul>
+        </div>
+
+        <!-- section-1-vertical-column- "Key Metrics" -->
+        <div class="section1">
+            <div class="section1-row section1-heading">
+                <p>Key Metrics</p>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Queue to Registration
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text"> Registration Time</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.registration.time as avg_regtm %}
+                        <p class="section1-row-time {{key_metrics.registration.time | time_class}}">{{avg_regtm}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Registration to Triage
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text">Time to Triagee</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.triage_done.time as avg_triageDone %}
+                        <p class="section1-row-time {{key_metrics.triage_done.time | time_class}} ">{{avg_triageDone}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Triage to Consult
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text"> Time to Consult</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.triage_waiting.time as avg_waitTime %}
+                        <p class="section1-row-time {{key_metrics.triage_waiting.time | time_class}} ">{{avg_waitTime}}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Triage End to Discharge
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text"> In Zone Time</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.in_zone.time as zone_tm %}
+                        <p class="section1-row-time  {{ key_metrics.in_zone.time | time_class }} ">{{zone_tm}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Consultation to Discharge
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text"> Treatment Time</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.treatment.time as treat_tm %}
+                        <p class="section1-row-time {{key_metrics.treatment.time | time_class }}">{{treat_tm}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Lab Order Request to Processing
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text"> Lab Processing Time</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.cons_waiting.time as process_tm %}
+                        <p class="section1-row-time {{key_metrics.cons_waiting.time | time_class}} ">{{process_tm}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    Radiology Order Request to Processing
+                </p>
+                <div class="section1-row-content">
+                    <p class="section1-row-text"> Radiology Processing Time</p>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.registration.time as radio_tm %}
+                        <p class="section1-row-time {{key_metrics.registration.time | time_class}}">{{radio_tm}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- IP Transfer row -->
+            <div class="section1-row">
+                <p class="section1-row-small">
+                    UCC Discharge to IP Bed Allotment
+                </p>
+                <div class="section1-row-content transfers">
+                    <p class="section1-row-text"> IP Transfers</p>
+                    <div class="transfers-box">
+                        <i class="fas fa-hospital-user user"></i>
+                        <span>{{ key_metrics.ip_transfers.completed.count }}</span>
+                    </div>
+                    <div> <i class="far fa-clock  clock"></i>
+                        {% seconds_to_hm key_metrics.ip_transfers.completed.time time as ip_time %}
+                        <p class="section1-row-time {{key_metrics.ip_transfers.completed.time | time_class}} ">
+                            {{ip_time}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Total Visits & Visit Time -->
+            <div class="section1-row-box">
+                <div class="col1">
+                    <p>Total Visits</p>
+                    <p class="total-visits"> {{ key_metrics.total.count }}</p>
+                </div>
+                <div class="col2">
+                    <p class="text-first">Visit Time</p>
+                    <p class="text-second"> Registration to discharge</p>
+                    {% seconds_to_hm key_metrics.registration.time time as discharge_tm %}
+                    <p class="time {{ key_metrics.registration.time | time_class}}">{{discharge_tm}}</p>
+                </div>
+            </div>
+            <!-- multi boxes -->
+            <div class="section1-row-multiBox">
+                <div class="multi-box">
+                    <p><span><i class="fas fa-hospital"></i></span>Insurance</p>
+                    <div>
+                        <div class="left">
+                            <p> {{ completed.Payor.Insurance.count }} </p>
+                        </div>
+                        <div class="right">
+                            <p> <i class="far fa-clock  clock"></i></p>
+                            {% seconds_to_hm completed.Payor.Insurance.time as insurance_tm %}
+                            <p class="{{ completed.Payor.Insurance.count | time_class}}">{{insurance_tm}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="multi-box">
+                    <p><span><i class="fas fa-wallet"></i></span>Self Pay</p>
+                    <div>
+                        <div class="left">
+                            <p>{{ completed.Payor.Self_Pay.count }}</p>
+                        </div>
+                        <div class="right">
+                            <p> <i class="far fa-clock  clock"></i></p>
+                            {% seconds_to_hm completed.Payor.Self_Pay.time as selfpay_tm %}
+                            <p class="{{ completed.Payor.Self_Pay.time | time_class}}">{{selfpay_tm}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section1-row-multiBox">
+                <div class="multi-box">
+                    <p><span><i class="fas fa-hospital"></i></span>International</p>
+                    <div>
+                        <div class="left">
+                            <p>{{ completed.Residency.International.count }}</p>
+                        </div>
+                        <div class="right">
+                            <p> <i class="far fa-clock  clock"></i></p>
+                            {% seconds_to_hm completed.Residency.International.time as international_tm %}
+                            <p>{{international_tm}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="multi-box">
+                    <p><span><i class="fas fa-wallet"></i></span>Insurance</p>
+                    <div>
+                        <div class="left">
+                            <p>{{ completed.Residency.Local.count }}</p>
+                        </div>
+                        <div class="right">
+                            <p> <i class="far fa-clock  clock"></i></p>
+                            {% seconds_to_hm completed.Residency.Local.time as local_tm %}
+                            <p>{{local_tm}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- section-2-horizontal-row-1- "Zone Statistics & doubleBarGraph" -->
+        <div class="section2">
+
+            <div class="section2-row1">
+                <div class="section2-table">
+                    <div class="zone-table">
+                        <div class="col1 heading">
+                            <p>Zone Statistics</p>
+                        </div>
+                        <div class="col1 content">
+                            <p><i class="fas fa-users"></i></p>
+                            <p>Total Visits</p>
+                        </div>
+                        <div class="col1 content">
+                            <p><i class="fas fa-circle-notch"></i></p>
+                            <p>Active </p>
+                        </div>
+                        <div class="col1 content">
+                            <p><i class="fas fa-suitcase"></i></p>
+                            <p>Discharged</p>
+                        </div>
+                        <div class="col1 content">
+                            <p><i class="fas fa-times"></i></p>
+                            <p>Average Triage Time</p>
+                        </div>
+                        <div class="col1 content">
+                            <p><i class="fas fa-times-circle"></i></p>
+                            <p>Average Hold time</p>
+                        </div>
+                        <div class="col1 content">
+                            <p><i class="fas fa-user-clock"></i></p>
+                            <p>Average Visit Time</p>
+                        </div>
+                    </div>
+                    <div class="zone-division">
+                        <div class="multi-col heading col-green-heading">
+                            <p>Green Zone</p>
+                        </div>
+                        <div class="multi-col content col-green">
+                            <p>{{ zonestats.green.total_visits_count }}</p>
+                        </div>
+                        <div class="multi-col content col-green">
+                            <p>{{ zonestats.green.active_count }}</p>
+                        </div>
+                        <div class="multi-col content col-green">
+                            <p>{{ zonestats.green.discharge_count }}</p>
+                        </div>
+                        <div class="multi-col content col-green ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.green.avg_triage_tm as triage_tm %}
+                                <span class="{{ zonestats.green.avg_triage_tm | time_class }}">{{triage_tm}}</span>
+                            </div>
+                        </div>
+                        <div class="multi-col content col-green ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.green.avg_cons_tm as hold_tm %}
+                                <span class="{{ zonestats.green.avg_cons_tm | time_class }}">{{hold_tm}}</span>
+                            </div>
+                        </div>
+                        <div class="multi-col content col-green ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.green.avg_visit_tm as visit_tm %}
+                                <span class="{{ zonestats.green.avg_visit_tm | time_class }}">{{visit_tm}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zone-division">
+                        <div class="multi-col heading col-yellow-heading">
+                            <p>Yellow Zone</p>
+                        </div>
+                        <div class="multi-col content col-yellow">
+                            <p>{{zonestats.yellow.total_visits_count}}</p>
+                        </div>
+                        <div class="multi-col content col-yellow">
+                            <p>{{zonestats.yellow.active_count}}</p>
+                        </div>
+                        <div class="multi-col content col-yellow">
+                            <p>{{zonestats.yellow.discharge_count}}</p>
+                        </div>
+                        <div class="multi-col content col-yellow ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.yellow.avg_triage_tm as triage_tm %}
+                                <span class="{{ zonestats.yellow.avg_triage_tm | time_class }}">{{triage_tm }}</span>
+                            </div>
+                        </div>
+                        <div class="multi-col content col-yellow ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.yellow.avg_cons_tm as hold_tm %}
+                                <span class="{{ zonestats.yellow.avg_cons_tm | time_class }}">{{hold_tm}}</span>
+                            </div>
+
+                        </div>
+                        <div class="multi-col content col-yellow ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.yellow.avg_visit_tm as visit_tm %}
+                                <span class="{{ zonestats.yellow.avg_visit_tm | time_class }}">{{visit_tm}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zone-division red-zone">
+                        <div class="multi-col heading col-red-heading">
+                            <p>Red Zone</p>
+                        </div>
+                        <div class="multi-col content col-red">
+                            <p>{{zonestats.red.total_visits_count}}</p>
+                        </div>
+                        <div class="multi-col content col-red">
+                            <p>{{zonestats.red.active_count}}</p>
+                        </div>
+                        <div class="multi-col content col-red">
+                            <p>{{zonestats.red.discharge_count}}</p>
+                        </div>
+                        <div class="multi-col content col-red ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.red.avg_triage_tm as triage_tm %}
+                                <span class="{{ zonestats.red.avg_triage_tm | time_class }}">{{triage_tm}}</span>
+                            </div>
+                        </div>
+                        <div class="multi-col content col-red ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.red.avg_cons_tm as hold_tm %}
+                                <span class="{{ zonestats.red.avg_cons_tm | time_class }}">{{hold_tm}}</span>
+                            </div>
+
+                        </div>
+                        <div class="multi-col content col-red ">
+                            <div class="time"> <i class="far fa-clock  clock"></i>
+                                {% seconds_to_hm zonestats.red.avg_visit_tm as visit_tm %}
+                                <span class="{{ zonestats.red.avg_visit_tm | time_class }}">{{visit_tm}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section2-charts">
+                    <div id="chart4" class="chart"></div>
+                </div>
+            </div>
+
+            <div class="section2-row2">
+                <div id="chart1" class="chart"></div>
+                <div id="chart2" class="chart"></div>
+                <div id="chart3" class="chart"></div>
+            </div>
+            <!-- section2-row2-charts -->
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+            <script>
+
+                function barAreaGraph(data, chartId, color, title, trim) {
+                    const dataset = {
+                        x: data.x,
+                        y: data.y,
+                    };
+                    const options = {
+                        chart: {
+                            type: "area",
+                            foreColor: "#333",
+                            offsetX: -10,
+                            offsetY: 10,
+                            width: "100%",
+                        },
+                        subtitle: {
+                            text: title,
+                            align: "left",
+                            margin: 10,
+                            offsetX: 10,
+                            offsetY: 0,
+                            floating: false,
+                            style: {
+                                fontSize: "18px",
+                                fontWeight: "bolder",
+                                color: "#555",
+                            },
+                        },
+                        stroke: {
+                            width: [0, 2],
+                            curve: "smooth",
+                        },
+                        colors: color.map((item) => item),
+                        annotations: {
+                            yaxis: [
+                                {
+                                    y: 3600,
+                                    strokeDashArray: 3,
+                                    borderColor: "#3F8D5D",
+                                    offsetX: 0,
+                                    offsetY: -3,
+                                    yAxisIndex: 1,
+                                    label: {
+                                        borderColor: "none",
+                                        borderRadius: 4,
+                                        text: "KPI : 01:00",
+                                        offsetX: -5,
+                                        offsetY: -10,
+
+                                        style: {
+                                            background: "#F1FDEF",
+                                            color: "#3F8D5D",
+                                            fontSize: "12px",
+                                            fontWeight: 500,
+                                            cssClass: "apexcharts-yaxis-annotation-label",
+                                            padding: {
+                                                left: 5,
+                                                right: 5,
+                                                top: 6,
+                                                bottom: 6,
+                                            },
+                                        },
+                                    },
+                                },
+                            ],
+                        },
+                        series: [
+                            {
+                                name: "Patients",
+                                type: "bar",
+                                data: dataset.y[0].data,
+                            },
+                            {
+                                name: "Average Time",
+                                type: "area",
+                                data: dataset.y[1].data,
+                            },
+                        ],
+                        xaxis: {
+                            categories: dataset.x,
+                            labels: {
+                                show: true,
+                                rotate: -55,
+                                rotateAlways: false,
+                                hideOverlappingLabels: true,
+                                showDuplicates: false,
+                                trim: trim,
+                                minHeight: undefined,
+                                maxHeight: 70,
+                                style: {
+                                    colors: "#777777",
+                                    fontSize: "9px",
+                                    fontWeight: 600,
+                                    cssClass: "apexcharts-xaxis-label",
+                                },
+                                offsetX: 4,
+                                offsetY: 0,
+                            },
+                        },
+                        yaxis: [
+                            {
+                                seriesName: "Patients",
+                                labels: {
+                                    show: false,
+                                },
+                            },
+                            {
+                                seriesName: "Average Time",
+                                labels: {
+                                    show: false,
+                                },
+                            },
+                        ],
+                        grid: {
+                            Show: false,
+                            borderColor: "#0000000a",
+                            padding: {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0,
+                            },
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                borderRadius: 8,
+                                borderRadiusApplication: "end",
+                                borderRadiusWhenStacked: "last",
+                                columnWidth: "20",
+                                barHeight: "30%",
+                                dataLabels: {
+                                    position: "bottom",
+                                    enabled: true,
+                                    textAnchor: "middle",
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                },
+                            },
+                            area: {},
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            enabledOnSeries: [0, 1],
+                            formatter: function (val, { seriesIndex }) {
+                                if (seriesIndex === 1 && typeof val === "number") {
+                                    const hours = Math.floor(val / 3600);
+                                    const minutes = Math.floor((val % 3600) / 60);
+                                    return `${hours.toString().padStart(2, "0")}:${minutes
+                                        .toString()
+                                        .padStart(2, "0")}`;
+                                }
+                                return "";
+                            },
+                            offsetY: -10,
+                            style: {
+                                fontSize: "11px",
+                                fontFamily: "Helvetica, Arial, sans-serif",
+                                fontWeight: "700",
+                                colors: ["#CCCCDCA6"],
+                            },
+                            background: {
+                                enabled: true,
+                                foreColor: "#333333",
+                                padding: 5,
+                                borderRadius: 2,
+                                borderWidth: 1,
+                                // borderColor: "#CCCCDCA6",
+                                opacity: 0.7,
+                            },
+                        },
+                        markers: {
+                            size: 5,
+                        },
+                    };
+                    const chart = new ApexCharts(document.getElementById(chartId), options);
+                    chart.render();
+                }
+                function barCompareGraph(data, chartId, color, title, trim) {
+                    const dataset = {
+                        x: data.x,
+                        y: data.y,
+                    };
+
+                    const options = {
+                        chart: {
+                            type: "area",
+                            foreColor: "#333",
+                            offsetX: -10,
+                            offsetY: 10,
+                            width: 548,
+                            height: 265,
+                        },
+
+                        subtitle: {
+                            text: title,
+                            align: "left",
+                            margin: 10,
+                            offsetX: 10,
+                            offsetY: 0,
+                            floating: false,
+                            style: {
+                                fontSize: "18px",
+                                fontWeight: "bolder",
+                                color: "#555",
+                            },
+                        },
+
+                        stroke: {
+                            width: [0, 2],
+                            curve: "smooth",
+                        },
+                        colors: color.map((item) => item),
+                        annotations: {
+                            yaxis: [
+                                {
+                                    y: 250,
+                                    strokeDashArray: 3,
+                                    borderColor: "#3F8D5D",
+                                    offsetX: 0,
+                                    offsetY: -3,
+                                    yAxisIndex: 1,
+                                    label: {
+                                        borderColor: "none",
+                                        borderRadius: 4,
+                                        text: "KPI : 01:00",
+                                        offsetX: -5,
+                                        offsetY: -10,
+
+                                        style: {
+                                            background: "#F1FDEF",
+                                            color: "#3F8D5D",
+                                            fontSize: "12px",
+                                            fontWeight: 500,
+                                            cssClass: "apexcharts-yaxis-annotation-label",
+                                            padding: {
+                                                left: 5,
+                                                right: 5,
+                                                top: 6,
+                                                bottom: 6,
+                                            },
+                                        },
+                                    },
+                                },
+                            ],
+                        },
+
+                        series: [
+                            {
+                                name: "Traige Done",
+                                type: "bar",
+                                data: dataset.y[0].data,
+                            },
+                            {
+                                name: "Traige Done(Avg Time)",
+                                type: "area",
+                                data: dataset.y[1].data,
+                            },
+                            {
+                                name: "Traige Not Done",
+                                type: "bar",
+                                data: dataset.y[2].data,
+                            },
+                            {
+                                name: "Traige Not Done(Avg Time)",
+                                type: "area",
+                                data: dataset.y[3].data,
+                            },
+                        ],
+
+                        xaxis: {
+                            categories: dataset.x,
+                            labels: {
+                                show: true,
+                                rotate: -55,
+                                rotateAlways: false,
+                                hideOverlappingLabels: true,
+                                showDuplicates: false,
+                                trim: trim,
+                                minHeight: undefined,
+                                maxHeight: 70,
+                                style: {
+                                    colors: "#777777",
+                                    fontSize: "9px",
+                                    fontWeight: 600,
+                                    cssClass: "apexcharts-xaxis-label",
+                                },
+                                offsetX: 4,
+                                offsetY: 0,
+                            },
+                        },
+                        yaxis: [
+                            {
+                                seriesName: "Patients",
+                                labels: {
+                                    show: false,
+                                },
+                            },
+                            {
+                                seriesName: "Average Time",
+                                labels: {
+                                    show: false,
+                                },
+                            },
+                        ],
+                        grid: {
+                            Show: false,
+                            borderColor: "#0000000a",
+                            padding: {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0,
+                            },
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                borderRadius: 8,
+                                borderRadiusApplication: "end",
+                                borderRadiusWhenStacked: "last",
+                                columnWidth: "20",
+                                barHeight: "30%",
+                                dataLabels: {
+                                    position: "bottom",
+                                    enabled: true,
+                                    textAnchor: "middle",
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                },
+                            },
+                            area: {},
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            enabledOnSeries: [0, 1],
+                            formatter: function (val, { seriesIndex }) {
+                                if (seriesIndex === 1 && typeof val === "number") {
+                                    const hours = Math.floor(val / 3600);
+                                    const minutes = Math.floor((val % 3600) / 60);
+                                    return `${hours.toString().padStart(2, "0")}:${minutes
+                                        .toString()
+                                        .padStart(2, "0")}`;
+                                }
+                                return "";
+                            },
+                            offsetY: -10,
+                            style: {
+                                fontSize: "11px",
+                                fontFamily: "Helvetica, Arial, sans-serif",
+                                fontWeight: "700",
+                                colors: ["#8CE2C2"],
+                            },
+                            background: {
+                                enabled: true,
+                                foreColor: "#333333",
+                                padding: 5,
+                                borderRadius: 2,
+                                borderWidth: 1,
+                                borderColor: "#CCCCDCA6",
+                                opacity: 0.7,
+                            },
+                        },
+                        markers: {
+                            size: 5,
+                        },
+
+                        legend: {
+                            fontSize: "9px",
+                            fontWeight: 400,
+                            offsetX: 0,
+                            offsetY: 0,
+                            markers: {
+                                width: 8,
+                                height: 8,
+                            },
+                            itemMargin: {
+                                horizontal: 5,
+                                vertical: 2,
+                            },
+                        },
+                    };
+
+                    const chart4 = new ApexCharts(document.getElementById(chartId), options);
+                    chart4.render();
+                }
+
+                var data = JSON.parse('{{ jsonData|escapejs }}');
+                // var moduleName = Object.keys(data)
+                const module = "AccidentEmergency"
+
+
+                barCompareGraph(
+                    data.graphs[module].triage["comparison-1"],
+                    "chart4",
+                    [
+                        "rgba(114, 192, 144, 0.81)",
+                        "rgba(155, 208, 162, 0.50)",
+                        " #999999",
+                    ],
+                    "Patients by Interval",
+                    true
+                )
+                document.addEventListener('DOMContentLoaded', function () {
+                    barAreaGraph(
+                        data.graphs[module].Zone["barpie-1"]["bar"],
+                        "chart1",
+                        ["#72C090", "#C6F0C2"],
+                        "Patients By Zone",
+                        false
+                    );
+
+                    barAreaGraph(
+                        data.graphs[module].interval["barline-1"],
+                        "chart2",
+                        ["rgba(103, 103, 149, 0.90)", "rgba(103, 103, 149, 0.6)"],
+                        "Patients By Interval",
+                        false
+                    );
+
+                    barAreaGraph(
+                        data.graphs[module].Doctor["barline-1"],
+                        "chart3",
+                        ["#6F3652", "#A26985"],
+                        "Patients By Doctors",
+                        true
+                    );
+                });
+
+
+            </script>
+
+            <div class="section2-row3">
+                <div class="row3-box1">
+                    <p>Current</p>
+                    <p class="status">Waititing Status</p>
+
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="164" height="164" viewBox="0 0 174 174"
+                            fill="none">
+                            <g clip-path="url(#clip0_4_9361)">
+                                <path
+                                    d="M45.475 0.511719C35.9606 0.511719 28.225 8.24727 28.225 17.7617C28.225 27.2762 35.9606 35.0117 45.475 35.0117C54.9895 35.0117 62.725 27.2762 62.725 17.7617C62.725 8.24727 54.9895 0.511719 45.475 0.511719ZM131.725 0.511719C116.254 0.511719 104.125 12.6406 104.125 28.1117C104.125 43.5828 116.254 55.7117 131.725 55.7117C147.196 55.7117 159.325 43.5828 159.325 28.1117C159.325 12.6406 147.196 0.511719 131.725 0.511719ZM131.725 10.8617C133.639 10.8617 135.175 12.4115 135.175 14.3117V26.7102L141.105 32.532C142.452 33.8797 142.452 36.1438 141.105 37.4914C140.431 38.1652 139.514 38.4617 138.625 38.4617C137.736 38.4617 136.819 38.1652 136.145 37.4914L129.245 30.5914C128.598 29.9445 128.275 29.0281 128.275 28.1117V14.3117C128.275 12.4115 129.811 10.8617 131.725 10.8617ZM53.561 39.0008C52.7928 39.0008 52.0246 39.1086 51.2969 39.2164C46.4184 39.8229 42.052 42.4373 39.3297 46.4398C36.5805 50.4963 35.718 55.6039 36.9578 60.3477L47.3078 102.826C50.1244 113.688 59.7736 121.262 70.7031 121.262H101.322L109.731 163.309C110.742 168.861 115.728 173.012 121.375 173.012C125.014 173.012 128.396 171.435 130.647 168.699C132.884 165.963 133.72 162.392 133.019 158.888L122.992 108.109C121.604 101.626 115.984 97.1117 109.3 97.1117H81.2688L70.5953 52.8008C68.6008 44.8092 61.4313 39.0008 53.561 39.0008ZM23.2656 45.3617C22.2953 45.483 21.4328 46.0221 20.8803 46.8172C20.3278 47.6258 20.1391 48.623 20.3547 49.5664L33.5078 105.413C33.5213 105.454 33.4944 105.494 33.5078 105.521C37.3352 122.879 52.5233 135.062 70.2719 135.062H93.775C95.0149 135.075 96.1738 134.428 96.8072 133.35C97.4272 132.272 97.4272 130.951 96.8072 129.873C96.1738 128.795 95.0149 128.148 93.775 128.162H70.2719C55.6229 128.162 43.3053 118.337 40.1922 104.012C40.1922 103.971 40.1922 103.944 40.1922 103.904L27.1469 48.057C26.7695 46.2781 25.0715 45.0922 23.2656 45.3617Z"
+                                    fill="#DDDDDD" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4_9361">
+                                    <rect width="172.5" height="172.5" fill="white"
+                                        transform="translate(0.625 0.511719)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="row3-box2">
+                    <div class="box">
+                        <div class="top box-color1 ">
+                            <i class="fas fa-briefcase-medical sidebar-icon"></i>
+                            <small>For</small>
+                            <span>Triage</span>
+                        </div>
+                        <div class="content">
+                            <div class="left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
+                                    fill="none">
+                                    <path
+                                        d="M17.5635 3.06641C14.8172 3.06641 12.583 5.30064 12.583 8.04688C12.583 10.7931 14.8172 13.0273 17.5635 13.0273C20.3097 13.0273 22.5439 10.7931 22.5439 8.04688C22.5439 6.58813 21.9135 5.2738 20.9108 4.36211C20.886 4.4325 20.8389 4.49557 20.7699 4.53694L13.1808 9.09057C13.1273 9.12264 13.0683 9.13791 13.0102 9.13791C12.8974 9.13791 12.7875 9.08036 12.7253 8.97656C12.631 8.81931 12.6819 8.61542 12.8392 8.52106L20.4214 3.97158C19.6117 3.40215 18.6264 3.06641 17.5635 3.06641ZM15.7041 16.3477C11.7861 16.3477 8.59863 19.5352 8.59863 23.4531V24.3164H13.1127L18.7793 16.3477H15.7041ZM19.5926 16.3497L13.9275 24.3164H17.8955L23.101 17.3757C22.0726 16.751 20.8741 16.3799 19.5926 16.3497ZM23.6525 17.7472L18.7256 24.3164H20.2197C20.4031 24.3164 20.5518 24.465 20.5518 24.6484V27.9688C20.5518 28.1522 20.4031 28.3008 20.2197 28.3008H8.59863V29.0756C8.59863 30.1131 9.44259 30.957 10.4801 30.957H22.5439V22.6562C22.5439 22.4728 22.6926 22.3242 22.876 22.3242C23.0594 22.3242 23.208 22.4728 23.208 22.6562V30.957H24.6469C25.6844 30.957 26.5283 30.1131 26.5283 29.0756V23.4531C26.5283 21.1184 25.3963 19.0433 23.6525 17.7472ZM8.59863 24.9805V27.6367H10.7515L12.6405 24.9805H8.59863ZM13.4552 24.9805L11.5663 27.6367H15.4053L17.3975 24.9805H13.4552ZM18.2275 24.9805L16.2354 27.6367H19.8877V24.9805H18.2275Z"
+                                        fill="#CCCCCC" />
+                                </svg>
+                                <span>{{ inprogress.pdTriage.count }}</span>
+                            </div>
+                            <div class="mid"></div>
+                            <div class="right">
+                                <i class="far fa-clock"></i>
+                                {% seconds_to_hm inprogress.pdTriage.time as pdTriage_tm %}
+                                <span class="{{ inprogress.pdTriage.time | time_class }}">{{pdTriage_tm}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="top box-color2">
+                            <i class="fas fa-briefcase-medical sidebar-icon"></i>
+                            <small>For</small>
+                            <span>Consultation</span>
+                        </div>
+                        <div class="content">
+                            <div class="left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
+                                    fill="none">
+                                    <path
+                                        d="M17.5635 3.06641C14.8172 3.06641 12.583 5.30064 12.583 8.04688C12.583 10.7931 14.8172 13.0273 17.5635 13.0273C20.3097 13.0273 22.5439 10.7931 22.5439 8.04688C22.5439 6.58813 21.9135 5.2738 20.9108 4.36211C20.886 4.4325 20.8389 4.49557 20.7699 4.53694L13.1808 9.09057C13.1273 9.12264 13.0683 9.13791 13.0102 9.13791C12.8974 9.13791 12.7875 9.08036 12.7253 8.97656C12.631 8.81931 12.6819 8.61542 12.8392 8.52106L20.4214 3.97158C19.6117 3.40215 18.6264 3.06641 17.5635 3.06641ZM15.7041 16.3477C11.7861 16.3477 8.59863 19.5352 8.59863 23.4531V24.3164H13.1127L18.7793 16.3477H15.7041ZM19.5926 16.3497L13.9275 24.3164H17.8955L23.101 17.3757C22.0726 16.751 20.8741 16.3799 19.5926 16.3497ZM23.6525 17.7472L18.7256 24.3164H20.2197C20.4031 24.3164 20.5518 24.465 20.5518 24.6484V27.9688C20.5518 28.1522 20.4031 28.3008 20.2197 28.3008H8.59863V29.0756C8.59863 30.1131 9.44259 30.957 10.4801 30.957H22.5439V22.6562C22.5439 22.4728 22.6926 22.3242 22.876 22.3242C23.0594 22.3242 23.208 22.4728 23.208 22.6562V30.957H24.6469C25.6844 30.957 26.5283 30.1131 26.5283 29.0756V23.4531C26.5283 21.1184 25.3963 19.0433 23.6525 17.7472ZM8.59863 24.9805V27.6367H10.7515L12.6405 24.9805H8.59863ZM13.4552 24.9805L11.5663 27.6367H15.4053L17.3975 24.9805H13.4552ZM18.2275 24.9805L16.2354 27.6367H19.8877V24.9805H18.2275Z"
+                                        fill="#CCCCCC" />
+                                </svg>
+                                <span>{{ inprogress.pdConsultation.count }}</span>
+                            </div>
+                            <div class="mid"></div>
+                            <div class="right">
+                                <i class="far fa-clock"></i>
+                                {% seconds_to_hm inprogress.pdConsultation.time as consult_tm %}
+                                <span class="{{ inprogress.pdConsultation.time | time_class }}">{{ consult_tm }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row3-box3">
+                    <div id="#myTable">
+                        <div class="header">
+                            <span class="svg"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20"
+                                    viewBox="0 0 25 25" fill="none">
+                                    <path
+                                        d="M12.228 2.16797C10.2895 2.16797 8.7124 3.74508 8.7124 5.68359C8.7124 7.62211 10.2895 9.19922 12.228 9.19922C14.1665 9.19922 15.7437 7.62211 15.7437 5.68359C15.7437 4.65389 15.2986 3.72613 14.5908 3.08258C14.5733 3.13227 14.5401 3.17679 14.4914 3.20599L9.13437 6.42032C9.09663 6.44296 9.05499 6.45374 9.01398 6.45374C8.93434 6.45374 8.85676 6.41311 8.81284 6.33984C8.74627 6.22884 8.78222 6.08492 8.89322 6.01831L14.2454 2.80692C13.6738 2.40496 12.9783 2.16797 12.228 2.16797ZM10.9155 11.543C8.1499 11.543 5.8999 13.793 5.8999 16.5586V17.168H9.0863L13.0862 11.543H10.9155ZM13.6604 11.5444L9.66144 17.168H12.4624L16.1369 12.2686C15.411 11.8277 14.5649 11.5658 13.6604 11.5444ZM16.5262 12.5309L13.0483 17.168H14.103C14.2325 17.168 14.3374 17.2729 14.3374 17.4023V19.7461C14.3374 19.8756 14.2325 19.9805 14.103 19.9805H5.8999V20.5274C5.8999 21.2597 6.49564 21.8555 7.22797 21.8555H15.7437V15.9961C15.7437 15.8666 15.8486 15.7617 15.978 15.7617C16.1075 15.7617 16.2124 15.8666 16.2124 15.9961V21.8555H17.2281C17.9604 21.8555 18.5562 21.2597 18.5562 20.5274V16.5586C18.5562 14.9106 17.7571 13.4458 16.5262 12.5309ZM5.8999 17.6367V19.5117H7.41959L8.75296 17.6367H5.8999ZM9.32809 17.6367L7.99472 19.5117H10.7046L12.1108 17.6367H9.32809ZM12.6968 17.6367L11.2905 19.5117H13.8687V17.6367H12.6968Z"
+                                        fill="white" />
+                                </svg></span>
+                            <span>Doctor Statistics</span>
+                            <div class="input-div">
+                                <input type="text" id="search" placeholder='Search here...' class="search-input">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4_8734)">
+                                        <path
+                                            d="M7.47003 0.971725C4.46939 0.971725 2.03003 3.41109 2.03003 6.41173C2.03003 9.41236 4.46939 11.8517 7.47003 11.8517C8.65799 11.8517 9.75456 11.4649 10.65 10.8167L14.8575 15.0242L15.7625 14.1192L11.5938 9.95048C12.412 8.99829 12.91 7.76329 12.91 6.41173C12.91 3.41109 10.4707 0.971725 7.47003 0.971725ZM7.47003 1.61173C10.1248 1.61173 12.27 3.75697 12.27 6.41173C12.27 9.06648 10.1248 11.2117 7.47003 11.2117C4.81527 11.2117 2.67003 9.06648 2.67003 6.41173C2.67003 3.75697 4.81527 1.61173 7.47003 1.61173Z"
+                                            fill="#343571" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4_8734">
+                                            <rect width="16" height="16" fill="white"
+                                                transform="translate(0.75 0.0117188)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <table id="myTable" class="" style="border-spacing:0 10px; color:black">
+                            <thead>
+                                <tr>
+                                    <th>Doctor </th>
+                                    <th>
+                                        Patients
+                                    </th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for v in docstats %}
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">{{v.doc_name}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="patients">{{v.count}}</div>
+                                    </td>
+                                    {% seconds_to_hm v.avg_visit_tm as vtime %}
+                                    <td>
+                                        <div class="time-content"><span><i class="far fa-clock clock-icon"></i></span>
+                                            <span class="time {{ v.avg_visit_tm | time_class }}">{{vtime}}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% load static %}
+{% load compress %}
+{% compress css %}
+<link type="text/x-scss" href="{% static 'main/style.scss' %}" rel="stylesheet" media="screen">
+{% endcompress %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

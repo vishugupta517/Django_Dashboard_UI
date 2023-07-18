@@ -1,0 +1,31 @@
+/* line 1, ui/static/main/style.scss */
+.header-container {
+  background: var(--bg-light-3, #f9f6f6); }
+  /* line 3, ui/static/main/style.scss */
+  .header-container .header {
+    display: flex;
+    justify-content: space-between; }
+    /* line 9, ui/static/main/style.scss */
+    .header-container .header nav {
+      border-width: 1px 0;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      position: relative; }
+      /* line 17, ui/static/main/style.scss */
+      .header-container .header nav ul {
+        position: absolute;
+        top: 0;
+        width: 100%; }
+        /* line 22, ui/static/main/style.scss */
+        .header-container .header nav ul li {
+          display: inline; }
+          /* line 25, ui/static/main/style.scss */
+          .header-container .header nav ul li a {
+            display: inline-block;
+            padding: 15px;
+            font-size: 17px;
+            font-family: "Open Sans", sans-serif;
+            text-decoration: none;
+            color: white; }
